@@ -1,0 +1,4 @@
+server/data/*
+**/.pytest_cache
+.benchmarks
+**/__pycache__
