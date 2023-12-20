@@ -1,7 +1,7 @@
 from flask import Flask
 import pytest
 from grade_save.app import create_app
-import time
+import os
 
 
 @pytest.fixture
@@ -28,3 +28,5 @@ def test_add_grade(client):
     client.post('/add_grade/' + route_id, json={"grade": "v3"})
     rv = client.get('/generate_average/' + route_id)
     assert rv.get_data() == b'v2'
+    os.remove(f'data/{route_id}.csv')
+    
